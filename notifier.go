@@ -9,7 +9,6 @@ import (
 	"strings"
 	"time"
 
-	"./request"
 	"github.com/bwmarrin/discordgo"
 )
 
@@ -59,7 +58,7 @@ func setLatestKeys() {
 }
 
 func retrieveData() []Notification {
-	xmlData, _ := request.Get("https://assetgame.roblox.com/asset/?id=317944796")
+	xmlData, _ := HTTPGet("https://assetgame.roblox.com/asset/?id=317944796")
 	var data XMLReturn
 	xml.Unmarshal([]byte(xmlData), &data)
 
