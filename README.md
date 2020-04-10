@@ -4,7 +4,7 @@ Source code for the RBXNotifier bot.
 
 Due to the discord rate limit and the amount of servers the bot is in the bot has gotten extremely slow with notifications. I decided to open source this so people will be able to run this for their own server and have faster notifications.
 
-The code is trash don't try to learn from it pls
+Notifications are sourced from Roblox+
 
 ## Running the bot
 ### Prerequisites
