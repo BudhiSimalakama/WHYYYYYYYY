@@ -58,7 +58,7 @@ func setLatestKeys() {
 }
 
 func retrieveData() []Notification {
-	xmlData, _ := HTTPGet("https://assetgame.roblox.com/asset/?id=317944796")
+	xmlData, _ := HTTPGet("https://assetdelivery.roblox.com/v1/asset?id=317944796")
 	var data XMLReturn
 	xml.Unmarshal([]byte(xmlData), &data)
 
