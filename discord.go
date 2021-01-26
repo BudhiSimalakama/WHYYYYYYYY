@@ -131,7 +131,10 @@ func msgDispatcher(s *discordgo.Session, embed *discordgo.MessageEmbed) {
 				}
 
 				if c.Name == "notifier" || c.Name == "item-notifier" {
-					_, e := s.ChannelMessageSendEmbed(c.ID, embed)
+					m, e := s.ChannelMessageSendEmbed(c.ID, embed)
+					if config.SendAnnouncements {
+						s.ChannelMessageCrosspost(c.ID, m.ID)
+					}
 					if e != nil && strings.HasPrefix(e.Error(), "HTTP 403 Forbidden") {
 						s.ChannelMessageSend(guild.SystemChannelID, "It appears I don't have permission to access or message in the specified notification channel")
 					}
@@ -139,6 +142,9 @@ func msgDispatcher(s *discordgo.Session, embed *discordgo.MessageEmbed) {
 			}
 		} else {
 			_, e := s.ChannelMessageSendEmbed(channel, embed)
+			if config.SendAnnouncements {
+				s.ChannelMessageCrosspost(channel, m.ID)
+			}
 			if e != nil && strings.HasPrefix(e.Error(), "HTTP 403 Forbidden") {
 				s.ChannelMessageSend(guild.SystemChannelID, "It appears I don't have permission to access or message in the specified notification channel")
 			}
