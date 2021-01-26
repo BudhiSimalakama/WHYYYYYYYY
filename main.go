@@ -12,8 +12,9 @@ import (
 
 // Configuration discord bot storage
 type Configuration struct {
-	MinShardCount int
-	DiscordToken  string
+	MinShardCount     int
+	DiscordToken      string
+	SendAnnouncements bool
 }
 
 var (
